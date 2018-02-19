@@ -29,7 +29,8 @@ export class PhoneByMaskComponent implements OnChanges {
       const prefix = numberArr.splice(0, maskPrefixLength).join('');
       if (numberArr.length) {
         number = maskDigitChunks.reduce((arr, chunk) => {
-          arr.push(numberArr.splice(0, chunk.length).join(''));
+          const digits = numberArr.splice(0, chunk.length);
+          if (digits.length) { arr.push(digits.join('')); }
           return arr;
         }, []).join('-');
       }
