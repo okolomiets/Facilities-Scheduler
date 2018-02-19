@@ -1,45 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PhoneParserService } from './utils/phone-parser.service';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
   converterForm: FormGroup;
-  result: string;
+  formData = new Subject();
+  code: string;
+  phone: string;
+  mask: string;
 
-  constructor(
-    private phoneParser: PhoneParserService
-  ) { }
+  constructor( ) { }
 
   ngOnInit() {
     this.converterForm = new FormGroup({
-      code: new FormControl('', [
+      code: new FormControl('380', [
         Validators.required,
         Validators.pattern(/^[0-9]+$/)
       ]),
-      phone: new FormControl('', [
+      phone: new FormControl('677569166', [
         Validators.required,
         Validators.pattern(/^[0-9]+$/)
       ]),
-      mask: new FormControl('', [
+      mask: new FormControl('(99) 999-99-99', [
         Validators.required,
         Validators.pattern(/^\([0-9]+\) .+$/)
       ])
     });
-  }
-
-  parseFormError() {
-    console.log(this.converterForm);
+    this.formData.subscribe(({ code, phone, mask }) => {
+      this.code = code;
+      this.phone = phone;
+      this.mask = mask;
+    });
   }
 
   onSubmit() {
-    const { code, phone, mask } = this.converterForm.value;
-    const { prefix, number } = this.phoneParser.convertByMask(phone, mask);
-    this.result = `+${code} (${prefix}) ${number}`;
+    this.formData.next(this.converterForm.value);
   }
 
 }
