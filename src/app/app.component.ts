@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       ]),
       mask: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\([0-9]+\) .+$/)
+        Validators.pattern(/^\([9]+\) [9\-]+$/)
       ])
     });
     this.formData.subscribe(({ code, phone, mask }) => {

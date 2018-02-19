@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 export class PhoneParserService {
 
   convertByMask(phone: string, mask: string): any {
-    const parsedMask = mask.match(/\(([0-9]+)\) (.+)/);
+    const parsedMask = mask.match(/\(([9]+)\) ([9\-]+)/);
     const numberArr = phone.split('');
     if (parsedMask.length) {
       const maskPrefixLength = parsedMask[1].length;
