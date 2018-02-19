@@ -23,13 +23,16 @@ export class PhoneByMaskComponent implements OnChanges {
     const parsedMask = mask.match(/\(([9]+)\) ([9\-]+)/);
     const numberArr = phone.split('');
     if (parsedMask.length) {
+      let number = '';
       const maskPrefixLength = parsedMask[1].length;
       const maskDigitChunks = parsedMask[2].split('-');
       const prefix = numberArr.splice(0, maskPrefixLength).join('');
-      const number = maskDigitChunks.reduce((arr, chunk) => {
-        arr.push(numberArr.splice(0, chunk.length).join(''));
-        return arr;
-      }, []).join('-');
+      if (numberArr.length) {
+        number = maskDigitChunks.reduce((arr, chunk) => {
+          arr.push(numberArr.splice(0, chunk.length).join(''));
+          return arr;
+        }, []).join('-');
+      }
 
       return { prefix, number };
     }
