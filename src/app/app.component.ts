@@ -19,15 +19,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.converterForm = new FormGroup({
-      code: new FormControl('380', [
+      code: new FormControl('', [
         Validators.required,
         Validators.pattern(/^[0-9]+$/)
       ]),
-      phone: new FormControl('677569166', [
+      phone: new FormControl('', [
         Validators.required,
         Validators.pattern(/^[0-9]+$/)
       ]),
-      mask: new FormControl('(99) 999-99-99', [
+      mask: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\([0-9]+\) .+$/)
       ])
