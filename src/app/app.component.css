@@ -1,0 +1,11 @@
+h1 {
+  text-align:center;
+}
+form {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+.result h1 {
+  color: green;
+  font-weight: bold;
+}
