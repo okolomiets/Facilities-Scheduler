@@ -19,6 +19,21 @@ export class PhoneByMaskComponent implements OnChanges {
     }
   }
 
+  /*
+    Phone mask is a string (e.g. (999) 999-9999),
+    where 9 should be replaced with number character from phone number.
+    All other characters in mask should be used literally.
+
+    Example input:
+      {
+        phoneCode: '1',
+        phone: '2222222222',
+        phoneMask: '(999) 999-9999'
+      }
+    Example output:
+      '+1 (222) 222-2222'
+   */
+
   convertByMask(phone: string, mask: string): any {
     const parsedMask = mask.match(/\(([9]+)\) ([9\-]+)/);
     const numberArr = phone.split('');
