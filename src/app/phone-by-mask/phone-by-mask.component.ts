@@ -15,19 +15,19 @@ export class PhoneByMaskComponent implements OnChanges {
   ngOnChanges() {
     if (this.phone) {
       const { prefix, number } = this.convertByMask(this.phone, this.mask);
-      this.result = `+${this.code} (${prefix}) ${number}`;
+      this.result = (this.code && prefix && number) && `+${this.code} (${prefix}) ${number}`;
     }
   }
 
   convertByMask(phone: string, mask: string): any {
     const parsedMask = mask.match(/\(([9]+)\) ([9\-]+)/);
     const numberArr = phone.split('');
-    if (parsedMask.length) {
+    if (parsedMask && parsedMask.length) {
       let number = '';
       const maskPrefixLength = parsedMask[1].length;
       const maskDigitChunks = parsedMask[2].split('-');
       const prefix = numberArr.splice(0, maskPrefixLength).join('');
-      if (numberArr.length) {
+      if (numberArr && numberArr.length) {
         number = maskDigitChunks.reduce((arr, chunk) => {
           const digits = numberArr.splice(0, chunk.length);
           if (digits.length) { arr.push(digits.join('')); }
