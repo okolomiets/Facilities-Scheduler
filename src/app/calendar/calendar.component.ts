@@ -67,7 +67,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
         this.showSchedule = !!this.facilityId;
         this.facility = this.calendarService.getFacilityEntities()[this.facilityId];
         if (!this.facility) {
-          this.goHome();
+          this.goBack();
         }
         this.events = this.calendarService.getEvents()
           .reduce((events, event) => {
@@ -94,7 +94,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     this.calendarEvents.next([]);
   }
 
-  goHome() {
+  goBack() {
     this.router.navigate([''], {relativeTo: this.currentRoute});
   }
 
