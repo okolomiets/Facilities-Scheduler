@@ -1,9 +1,12 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+
+import { Event } from './models/event';
+import { Facility } from './models/facility';
 
 @Injectable()
 export class CalendarService {
 
-  getFacilities() {
+  getFacilities(): Facility[] {
     return [
       {
         id: 1,
@@ -60,7 +63,7 @@ export class CalendarService {
     ];
   }
 
-  getEvents() {
+  getEvents(): Event[] {
     return [
       {
         facilityId: 1,

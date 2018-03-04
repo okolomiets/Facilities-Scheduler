@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+
+import { Event } from './models/event';
+
 import { CalendarService } from './calendar.service';
 
 @Component({
@@ -19,7 +22,7 @@ import { CalendarService } from './calendar.service';
 })
 export class CalendarComponent implements OnInit {
   calendarOptions: Object;
-  events: Object[] = [];
+  events: Event[] = [];
   calendarEvents = new Subject();
   showSchedule = true;
 
@@ -44,7 +47,7 @@ export class CalendarComponent implements OnInit {
       },
     };
 
-    this.calendarEvents.subscribe((data: Object[]) => {
+    this.calendarEvents.subscribe((data: Event[]) => {
       this.events = data;
     });
 

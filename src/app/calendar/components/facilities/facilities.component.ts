@@ -1,5 +1,7 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {CalendarService} from '../../calendar.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { CalendarService} from '../../calendar.service';
+
+import { Facility } from '../../models/facility';
 
 @Component({
   selector: 'app-facilities',
@@ -13,7 +15,7 @@ import {CalendarService} from '../../calendar.service';
   encapsulation: ViewEncapsulation.None
 })
 export class FacilitiesComponent implements OnInit {
-  facilities: any[] = [];
+  facilities: Facility[] = [];
 
   constructor(private calendarService: CalendarService) { }
 
