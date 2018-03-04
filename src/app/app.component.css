@@ -5,6 +5,12 @@ form {
   margin-left: 25%;
   margin-right: 25%;
 }
+
+.app-calendar-container {
+  max-width: 900px;
+  margin: 40px auto;
+}
+
 .result h1 {
   color: green;
   font-weight: bold;

@@ -1,44 +1,14 @@
 <div>
   <h1>
-    Phone Numbers converter
+    JTC Booking Calendar
   </h1>
 </div>
 <hr>
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="converterForm" (submit)="onSubmit()">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label class="control-label" for="code">Phone code</label>
-            <input type="text" id="code" class="form-control" formControlName="code">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label class="control-label" for="phone">Phone number</label>
-            <input type="text" id="phone" class="form-control" formControlName="phone">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label class="control-label" for="mask">Mask</label>
-            <input type="text" id="mask" class="form-control" placeholder="(999) 999-9999" formControlName="mask">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" [disabled]="!converterForm.valid">Convert</button>
-        </div>
-      </div>
-    </form>
-  </div>
+<div class="app-calendar-container">
+  <app-fullcalendar *ngIf="displayCalendar"
+                             [options]="calendarOptions"
+                             [events]="events"
+                             (select)="onSelect($event)">
+  </app-fullcalendar>
 </div>
-<hr>
 
-<app-phone-by-mask [code]="code" [phone]="phone" [mask]="mask"></app-phone-by-mask>

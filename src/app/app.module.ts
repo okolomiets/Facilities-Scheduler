@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { CalendarComponent } from './calendar/calendar';
+
 import { AppComponent } from './app.component';
-import { PhoneByMaskComponent } from './phone-by-mask/phone-by-mask.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhoneByMaskComponent
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
