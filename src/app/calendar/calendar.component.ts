@@ -9,9 +9,8 @@ import { CalendarService } from './calendar.service';
       <app-facilities></app-facilities>
     </div>
     <hr>
-    <div class="app-calendar-container">
-      <app-fullcalendar *ngIf="displayCalendar"
-                        [options]="calendarOptions"
+    <div *ngIf="showSchedule" class="app-calendar-container">
+      <app-fullcalendar [options]="calendarOptions"
                         [events]="events"
                         (select)="onSelect($event)">
       </app-fullcalendar>
@@ -22,7 +21,7 @@ export class CalendarComponent implements OnInit {
   calendarOptions: Object;
   events: Object[] = [];
   calendarEvents = new Subject();
-  displayCalendar = true;
+  showSchedule = true;
 
   constructor(private calendarService: CalendarService) { }
 
@@ -59,7 +58,7 @@ export class CalendarComponent implements OnInit {
   }
 
   onClick() {
-    this.displayCalendar = !this.displayCalendar;
+    this.showSchedule = !this.showSchedule;
   }
 
   onSubmit() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {CalendarService} from '../../calendar.service';
 
 @Component({
@@ -9,6 +9,8 @@ import {CalendarService} from '../../calendar.service';
       <app-facility-group *ngIf="facility.group" [facilityGroup]="facility"></app-facility-group>
     </ng-container>
   </div>`,
+  styleUrls: ['./facilities.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FacilitiesComponent implements OnInit {
   facilities: any[] = [];

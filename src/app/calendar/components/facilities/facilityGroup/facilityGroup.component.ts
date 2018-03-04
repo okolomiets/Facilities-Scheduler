@@ -17,9 +17,7 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
         </div>
       </div>
     </div>
-    `,
-  styleUrls: ['./facilityGroup.component.css'],
-  encapsulation: ViewEncapsulation.None
+    `
 })
 export class FacilityGroupComponent {
   @Input() facilityGroup: any;
