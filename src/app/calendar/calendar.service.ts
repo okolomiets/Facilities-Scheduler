@@ -20,7 +20,7 @@ export class CalendarService {
       {
         id: 2,
         name: 'Meeting Room B',
-        photoUrl: 'assets/meeting_room.jpg',
+        photoUrl: 'assets/meeting_room2.jpg',
         description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
           Cu vis omittam persecuti, eam ex legimus alienum omittantur.
           Error laudem explicari ea pri, id vel maluisset instructior.`,
@@ -34,7 +34,7 @@ export class CalendarService {
           {
             id: 31,
             name: 'Meeting Point (Space A)',
-            photoUrl: 'assets/meeting_room.jpg',
+            photoUrl: 'assets/meeting_room3.jpg',
             description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
               Cu vis omittam persecuti, eam ex legimus alienum omittantur.
               Error laudem explicari ea pri, id vel maluisset instructior.`,
@@ -43,7 +43,7 @@ export class CalendarService {
           {
             id: 32,
             name: 'Meeting Point (Space B)',
-            photoUrl: 'assets/meeting_room.jpg',
+            photoUrl: 'assets/meeting_room3.jpg',
             description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
               Cu vis omittam persecuti, eam ex legimus alienum omittantur.
               Error laudem explicari ea pri, id vel maluisset instructior.`,
