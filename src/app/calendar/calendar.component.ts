@@ -15,7 +15,7 @@ import { Facility } from './models/facility';
     <div *ngIf="!showSchedule" class="app-facilities-list">
       <app-facilities></app-facilities>
     </div>
-    <div *ngIf="showSchedule" class="app-calendar-container">
+    <div *ngIf="showSchedule && facility" class="app-calendar-container">
       <ol class="breadcrumb">
         <li><a routerLink="/calendar">Facilities</a></li>
         <li>{{facility.name}}</li>
@@ -65,8 +65,10 @@ export class CalendarComponent implements OnInit, OnDestroy {
       if (params['facilityId']) {
         this.facilityId = parseInt(params['facilityId'], 10);
         this.showSchedule = !!this.facilityId;
-        this.facility = this.calendarService.getFacilities()
-          .find(facility => facility.id === this.facilityId);
+        this.facility = this.calendarService.getFacilityEntities()[this.facilityId];
+        if (!this.facility) {
+          this.goHome();
+        }
         this.events = this.calendarService.getEvents()
           .reduce((events, event) => {
             if (event.facilityId === this.facilityId) {

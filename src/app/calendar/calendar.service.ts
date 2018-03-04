@@ -98,4 +98,17 @@ export class CalendarService {
       }
     ];
   }
+
+  getFacilityEntities() {
+    return this.getFacilities()
+      .reduce((entities, facility) => {
+        entities[facility.id] = facility;
+        if (facility.group) {
+          facility.group.forEach(gFacility => {
+            entities[gFacility.id] = gFacility;
+          });
+        }
+        return entities;
+      }, {});
+  }
 }
