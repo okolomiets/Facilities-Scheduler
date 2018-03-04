@@ -4,11 +4,5 @@
   </h1>
 </div>
 <hr>
-<div class="app-calendar-container">
-  <app-fullcalendar *ngIf="displayCalendar"
-                             [options]="calendarOptions"
-                             [events]="events"
-                             (select)="onSelect($event)">
-  </app-fullcalendar>
-</div>
+<app-calendar></app-calendar>
 

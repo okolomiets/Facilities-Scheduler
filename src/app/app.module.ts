@@ -1,19 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 
-import { CalendarComponent } from './calendar/calendar';
+import { CalendarModule } from './calendar/calendar.module';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CalendarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,10 +15,10 @@ import {Options} from 'fullcalendar';
 @Component({
   template: '<div></div>',
   selector: 'app-fullcalendar',
-  styleUrls: ['./calendar.css'],
+  styleUrls: ['./schedule.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CalendarComponent implements OnInit, AfterViewInit {
+export class ScheduleComponent implements OnInit, AfterViewInit {
 
   @Input() options: Options;
   @Input() events: Object;
