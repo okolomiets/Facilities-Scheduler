@@ -11,7 +11,7 @@ export class CalendarService {
       {
         id: 1,
         name: 'Meeting Room A',
-        photoUrl: 'https://www.orega.com/media/372359/orega-canary-wharf-meeting-room.jpg',
+        photoUrl: 'assets/meeting_room.jpg',
         description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
           Cu vis omittam persecuti, eam ex legimus alienum omittantur.
           Error laudem explicari ea pri, id vel maluisset instructior.`,
@@ -20,7 +20,7 @@ export class CalendarService {
       {
         id: 2,
         name: 'Meeting Room B',
-        photoUrl: 'https://www.orega.com/media/372359/orega-canary-wharf-meeting-room.jpg',
+        photoUrl: 'assets/meeting_room.jpg',
         description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
           Cu vis omittam persecuti, eam ex legimus alienum omittantur.
           Error laudem explicari ea pri, id vel maluisset instructior.`,
@@ -34,7 +34,7 @@ export class CalendarService {
           {
             id: 31,
             name: 'Meeting Point (Space A)',
-            photoUrl: 'https://www.orega.com/media/372359/orega-canary-wharf-meeting-room.jpg',
+            photoUrl: 'assets/meeting_room.jpg',
             description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
               Cu vis omittam persecuti, eam ex legimus alienum omittantur.
               Error laudem explicari ea pri, id vel maluisset instructior.`,
@@ -43,7 +43,7 @@ export class CalendarService {
           {
             id: 32,
             name: 'Meeting Point (Space B)',
-            photoUrl: 'https://www.orega.com/media/372359/orega-canary-wharf-meeting-room.jpg',
+            photoUrl: 'assets/meeting_room.jpg',
             description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
               Cu vis omittam persecuti, eam ex legimus alienum omittantur.
               Error laudem explicari ea pri, id vel maluisset instructior.`,
@@ -54,7 +54,7 @@ export class CalendarService {
       {
         id: 4,
         name: 'Basketball Court',
-        photoUrl: 'http://files.leagueathletics.com/Images/Club/14101/1630789.jpg',
+        photoUrl: 'assets/basketball_court.jpg',
         description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
           Cu vis omittam persecuti, eam ex legimus alienum omittantur.
           Error laudem explicari ea pri, id vel maluisset instructior.`,

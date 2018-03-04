@@ -10,7 +10,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
               </h1>
             </div>
             <hr>
-            <app-calendar></app-calendar>`,
+            <router-outlet></router-outlet>`,
 })
 export class AppComponent {
   title = 'JTC';

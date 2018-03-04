@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { ScheduleComponent } from './components/schedule/schedule';
 import { CalendarComponent } from './calendar.component';
@@ -8,6 +9,18 @@ import { FacilityGroupComponent } from './components/facilities/facilityGroup/fa
 import { FacilityItemComponent } from './components/facilities/facilityItem/facilityItem.component';
 
 import { CalendarService } from './calendar.service';
+
+// routes
+export const ROUTES: Routes = [
+  {
+    path: '',
+    component: CalendarComponent,
+  },
+  {
+    path: ':facilityId',
+    component: CalendarComponent,
+  },
+];
 
 @NgModule({
   declarations: [
@@ -19,15 +32,13 @@ import { CalendarService } from './calendar.service';
     FacilityItemComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(ROUTES)
   ],
   providers: [
     // add the service to our sub-module
     CalendarService
   ],
-  exports: [
-    // exporting so our root module can access
-    CalendarComponent
-  ]
+  exports: []
 })
 export class CalendarModule {}
