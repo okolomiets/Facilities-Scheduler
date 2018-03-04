@@ -65,7 +65,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
       if (params['facilityId']) {
         this.facilityId = parseInt(params['facilityId'], 10);
         this.showSchedule = !!this.facilityId;
-        this.facility = this.calendarService.getFacilityEntities()[this.facilityId];
+        this.facility = this.calendarService.facilityEntities[this.facilityId];
         if (!this.facility) {
           this.goBack();
         }

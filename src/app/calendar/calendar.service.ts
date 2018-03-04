@@ -5,6 +5,11 @@ import { Facility } from './models/facility';
 
 @Injectable()
 export class CalendarService {
+  facilityEntities: {[key: string]: Facility};
+
+  constructor() {
+    this.facilityEntities = this.getFacilityEntities();
+  }
 
   getFacilities(): Facility[] {
     return [
