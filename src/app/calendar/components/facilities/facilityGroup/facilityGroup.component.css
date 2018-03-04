@@ -1,0 +1,13 @@
+.panel .panel-heading {
+  font-weight: bold;
+}
+
+.panel .panel-heading span.label {
+  float: right;
+  font-size: medium;
+  font-weight: lighter;
+}
+
+.panel .panel-body .media .media-object {
+  height: 100px;
+}

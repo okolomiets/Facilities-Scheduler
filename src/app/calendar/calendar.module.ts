@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { ScheduleComponent } from './components/schedule/schedule';
 import { CalendarComponent } from './calendar.component';
+import { FacilitiesComponent } from './components/facilities/facilities.component';
+import { FacilityGroupComponent } from './components/facilities/facilityGroup/facilityGroup.component';
+import { FacilityItemComponent } from './components/facilities/facilityItem/facilityItem.component';
 
 import { CalendarService } from './calendar.service';
 
@@ -10,7 +13,10 @@ import { CalendarService } from './calendar.service';
   declarations: [
     // registering our container component
     CalendarComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    FacilitiesComponent,
+    FacilityGroupComponent,
+    FacilityItemComponent
   ],
   imports: [
     CommonModule

@@ -2,8 +2,16 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  template: `<div>
+              <h1>
+                {{title}}
+              </h1>
+            </div>
+            <hr>
+            <app-calendar></app-calendar>`,
 })
-export class AppComponent { }
+export class AppComponent {
+  title = 'JTC';
+}

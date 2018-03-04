@@ -4,17 +4,23 @@ import { CalendarService } from './calendar.service';
 
 @Component({
   selector: 'app-calendar',
-  template: `<div class="app-calendar-container">
-              <app-fullcalendar *ngIf="displayCalendar"
-                                [options]="calendarOptions"
-                                [events]="events"
-                                (select)="onSelect($event)">
-              </app-fullcalendar>
-            </div>`,
+  template: `
+    <div class="app-facilities-list">
+      <app-facilities></app-facilities>
+    </div>
+    <hr>
+    <div class="app-calendar-container">
+      <app-fullcalendar *ngIf="displayCalendar"
+                        [options]="calendarOptions"
+                        [events]="events"
+                        (select)="onSelect($event)">
+      </app-fullcalendar>
+    </div>
+`,
 })
 export class CalendarComponent implements OnInit {
   calendarOptions: Object;
-  events: Object;
+  events: Object[] = [];
   calendarEvents = new Subject();
   displayCalendar = true;
 
@@ -39,7 +45,7 @@ export class CalendarComponent implements OnInit {
       },
     };
 
-    this.calendarEvents.subscribe(data => {
+    this.calendarEvents.subscribe((data: Object[]) => {
       this.events = data;
     });
 
@@ -57,7 +63,7 @@ export class CalendarComponent implements OnInit {
   }
 
   onSubmit() {
-    this.calendarEvents.next({});
+    this.calendarEvents.next([]);
   }
 
 }
