@@ -34,6 +34,9 @@ export class CalendarService {
       {
         id: 3,
         name: 'Meeting Point (Full)',
+        description: `Lorem ipsum dolor sit amet, ea homero rationibus per. Cum enim electram at.
+              Cu vis omittam persecuti, eam ex legimus alienum omittantur.
+              Error laudem explicari ea pri, id vel maluisset instructior.`,
         price: 30,
         group: [
           {
