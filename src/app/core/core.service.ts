@@ -4,7 +4,7 @@ import { Event } from './models/event';
 import { Facility } from './models/facility';
 
 @Injectable()
-export class CalendarService {
+export class CoreService {
   facilityEntities: {[key: string]: Facility};
 
   constructor() {

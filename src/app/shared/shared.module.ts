@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// ng-bootstrap modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // modals

@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Event } from './models/event';
 
-import { CalendarService } from './calendar.service';
+import { CoreService } from './core.service';
 import { AppModalService } from '../shared/modals/modals.service';
 
 import { Facility } from './models/facility';
@@ -32,7 +32,7 @@ import { FacilityScheduleModalComponent } from './components/facilities/facility
 `,
 })
 
-export class CalendarComponent implements OnInit, OnDestroy {
+export class CoreComponent implements OnInit, OnDestroy {
   calendarOptions: Object;
   events: Event[] = [];
   calendarEvents = new Subject();
@@ -42,7 +42,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
   facility: Facility;
 
   constructor(
-    private calendarService: CalendarService,
+    private coreService: CoreService,
     private currentRoute: ActivatedRoute,
     private router: Router,
     private appModalService: AppModalService
@@ -71,11 +71,11 @@ export class CalendarComponent implements OnInit, OnDestroy {
       if (params['facilityId']) {
         this.facilityId = parseInt(params['facilityId'], 10);
         this.showSchedule = !!this.facilityId;
-        this.facility = this.calendarService.facilityEntities[this.facilityId];
+        this.facility = this.coreService.facilityEntities[this.facilityId];
         if (!this.facility) {
           this.goBack();
         }
-        this.events = this.calendarService.getEvents()
+        this.events = this.coreService.getEvents()
           .reduce((events, event) => {
             if (event.facilityId === this.facilityId) {
               events.push(event);

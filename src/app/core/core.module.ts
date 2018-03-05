@@ -1,34 +1,38 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ScheduleComponent } from './components/schedule/schedule';
-import { CalendarComponent } from './calendar.component';
+import { CoreComponent } from './core.component';
 import { FacilitiesComponent } from './components/facilities/facilities.component';
 import { FacilityGroupComponent } from './components/facilities/facilityGroup/facilityGroup.component';
 import { FacilityItemComponent } from './components/facilities/facilityItem/facilityItem.component';
 import { FacilityScheduleModalComponent } from './components/facilities/facilityScheduleModal/facilityScheduleModal.component';
 
-import { CalendarService } from './calendar.service';
+import { CoreService } from './core.service';
 import { AppModalService } from '../shared/modals/modals.service';
 import { SharedModule } from '../shared/shared.module';
+
+// primeNG modules
+// import { CalendarModule } from 'primeng/calendar';
 
 // routes
 export const ROUTES: Routes = [
   {
     path: '',
-    component: CalendarComponent,
+    component: CoreComponent,
   },
   {
     path: ':facilityId',
-    component: CalendarComponent,
+    component: CoreComponent,
   },
 ];
 
 @NgModule({
   declarations: [
     // registering our container component
-    CalendarComponent,
+    CoreComponent,
     ScheduleComponent,
     FacilitiesComponent,
     FacilityGroupComponent,
@@ -41,15 +45,17 @@ export const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
-    SharedModule
+    // FormsModule,
+    SharedModule,
+    // CalendarModule
   ],
   providers: [
     // add the service to our sub-module
-    CalendarService,
+    CoreService,
     AppModalService
   ],
   exports: [
     FacilityScheduleModalComponent
   ]
 })
-export class CalendarModule {}
+export class CoreModule {}

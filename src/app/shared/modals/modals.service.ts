@@ -12,7 +12,7 @@ export class AppModalService {
     };
   }
 
-  open(template, params?: any = {}, options?: NgbModalOptions = {}) {
+  open(template, params: any = {}, options: NgbModalOptions = {}) {
     const modalOptions = {...this.defaultOptions, ...options};
     const modalRef = this.modalService.open(template, modalOptions);
     if (params) {

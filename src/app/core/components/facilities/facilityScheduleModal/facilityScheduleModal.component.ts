@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,7 +9,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
       <h4 class="modal-title">Facility Schedule</h4>
     </div>
     <div class="modal-body">
-      <p>{{date}}</p>
+      <p>date from select: {{date}}</p>
+      <!--<p-calendar [(ngModel)]="scheduleDate" [inline]="true"></p-calendar>-->
+      <!--<p>date from datepicker: {{scheduleDate}}</p>-->
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
@@ -18,6 +20,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FacilityScheduleModalComponent {
   @Input() date;
+  // scheduleDate: any;
 
   constructor(public activeModal: NgbActiveModal) {}
 }

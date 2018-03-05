@@ -21,7 +21,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
           </div>
         </div>
         <div class="panel-footer">
-          <span class="btn btn-default" [routerLink]="['/calendar', facility.id]">Show Schedule</span>
+          <span class="btn btn-default" [routerLink]="['/facilities', facility.id]">Show Schedule</span>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CalendarService} from '../../calendar.service';
+import { CoreService } from '../../core.service';
 
 import { Facility } from '../../models/facility';
 
@@ -17,9 +17,9 @@ import { Facility } from '../../models/facility';
 export class FacilitiesComponent implements OnInit {
   facilities: Facility[] = [];
 
-  constructor(private calendarService: CalendarService) { }
+  constructor(private coreService: CoreService) { }
 
   ngOnInit() {
-    this.facilities = this.calendarService.getFacilities();
+    this.facilities = this.coreService.getFacilities();
   }
 }
