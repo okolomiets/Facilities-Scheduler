@@ -15,10 +15,8 @@ export class AppModalService {
   open(template, params: any = {}, options: NgbModalOptions = {}) {
     const modalOptions = {...this.defaultOptions, ...options};
     const modalRef = this.modalService.open(template, modalOptions);
-    if (params) {
-      Object.keys(params).map(key => {
-        modalRef.componentInstance[key] = params[key];
-      });
-    }
+    Object.keys(params).map(key => {
+      modalRef.componentInstance[key] = params[key];
+    });
   }
 }
