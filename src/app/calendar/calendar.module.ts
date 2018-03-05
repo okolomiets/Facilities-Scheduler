@@ -7,8 +7,11 @@ import { CalendarComponent } from './calendar.component';
 import { FacilitiesComponent } from './components/facilities/facilities.component';
 import { FacilityGroupComponent } from './components/facilities/facilityGroup/facilityGroup.component';
 import { FacilityItemComponent } from './components/facilities/facilityItem/facilityItem.component';
+import { FacilityScheduleModalComponent } from './components/facilities/facilityScheduleModal/facilityScheduleModal.component';
 
 import { CalendarService } from './calendar.service';
+import { AppModalService } from '../shared/modals/modals.service';
+import { SharedModule } from '../shared/shared.module';
 
 // routes
 export const ROUTES: Routes = [
@@ -29,16 +32,24 @@ export const ROUTES: Routes = [
     ScheduleComponent,
     FacilitiesComponent,
     FacilityGroupComponent,
-    FacilityItemComponent
+    FacilityItemComponent,
+    FacilityScheduleModalComponent
+  ],
+  entryComponents: [
+    FacilityScheduleModalComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    SharedModule
   ],
   providers: [
     // add the service to our sub-module
-    CalendarService
+    CalendarService,
+    AppModalService
   ],
-  exports: []
+  exports: [
+    FacilityScheduleModalComponent
+  ]
 })
 export class CalendarModule {}

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Subject } from 'rxjs/Subject';
@@ -7,7 +7,11 @@ import { Subscription } from 'rxjs/Subscription';
 import { Event } from './models/event';
 
 import { CalendarService } from './calendar.service';
+import { AppModalService } from '../shared/modals/modals.service';
+
 import { Facility } from './models/facility';
+
+import { FacilityScheduleModalComponent } from './components/facilities/facilityScheduleModal/facilityScheduleModal.component';
 
 @Component({
   selector: 'app-calendar',
@@ -27,6 +31,7 @@ import { Facility } from './models/facility';
     </div>
 `,
 })
+
 export class CalendarComponent implements OnInit, OnDestroy {
   calendarOptions: Object;
   events: Event[] = [];
@@ -39,7 +44,8 @@ export class CalendarComponent implements OnInit, OnDestroy {
   constructor(
     private calendarService: CalendarService,
     private currentRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private appModalService: AppModalService
   ) { }
 
   ngOnInit() {
@@ -84,6 +90,7 @@ export class CalendarComponent implements OnInit, OnDestroy {
     console.log('onSelect view', view.type);
     console.log('onSelect date', date.format());
     // this.store.dispatch(new fromStore.VisualiseToppings(event));
+    this.appModalService.open(FacilityScheduleModalComponent, { date: date.format() });
   }
 
   onClick() {

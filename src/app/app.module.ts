@@ -4,6 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './shared/shared.module';
+
 // routes
 export const ROUTES: Routes = [
   {
@@ -28,7 +31,9 @@ export const ROUTES: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    NgbModule.forRoot(),
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
