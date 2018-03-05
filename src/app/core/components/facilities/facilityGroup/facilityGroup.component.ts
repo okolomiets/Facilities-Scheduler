@@ -16,7 +16,7 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
           </div>
         </div>
         <div class="panel-footer">
-          <span class="btn btn-default" [routerLink]="['/calendar', facilityGroup.id]">Show Schedule</span>
+          <span class="btn btn-default" [routerLink]="['/facilities', facilityGroup.id]">Show Schedule</span>
         </div>
       </div>
     </div>
