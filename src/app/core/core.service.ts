@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Event } from './models/event';
 import { Facility } from './models/facility';
 
-import { Facilities, Events } from '../data';
+import { Facilities, Events } from './core.data';
 
 @Injectable()
 export class CoreService {
