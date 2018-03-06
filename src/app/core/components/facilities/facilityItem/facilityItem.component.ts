@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   template: `
     <div class="col-md-6 facility-item">
       <div class="panel panel-default">
-        <div class="panel-heading">{{facility.name}}<span class="label label-default">{{facility.price | currency}}</span></div>
+        <div class="panel-heading">{{facility.name}}<span class="label label-default">{{facility.price | currency}}/h</span></div>
         <div class="panel-body">
           <div class="media">
             <div class="media-left">

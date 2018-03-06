@@ -6,7 +6,7 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
   template: `
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">{{facilityGroup.name}}<span class="label label-default">{{facilityGroup.price | currency}}</span></div>
+        <div class="panel-heading">{{facilityGroup.name}}<span class="label label-default">{{facilityGroup.price | currency}}/h</span></div>
         <div class="panel-body">
           <div>
             <p>{{facilityGroup.description}}</p>

@@ -13,5 +13,5 @@ import { Component, ViewEncapsulation } from '@angular/core';
             <router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  title = 'JTC';
+  title = 'Facilities';
 }
