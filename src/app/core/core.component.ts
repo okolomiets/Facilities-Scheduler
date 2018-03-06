@@ -85,8 +85,7 @@ export class CoreComponent implements OnInit, OnDestroy {
   }
 
   onSelect({date, jsEvent, view}) {
-    // this.store.dispatch(new fromStore.VisualiseToppings(event));
-    this.appModalService.open(FacilityScheduleModalComponent, { start: date.format(), facility: this.facility })
+    this.appModalService.open(FacilityScheduleModalComponent, { start: date, facility: this.facility })
       .then((result) => {
         const newEvent = {
           facilityId: this.facilityId,
