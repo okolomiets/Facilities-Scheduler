@@ -5,10 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { ScheduleComponent } from './components/schedule/schedule';
 import { CoreComponent } from './core.component';
-import { FacilitiesComponent } from './components/facilities/facilities.component';
-import { FacilityGroupComponent } from './components/facilities/facilityGroup/facilityGroup.component';
-import { FacilityItemComponent } from './components/facilities/facilityItem/facilityItem.component';
-import { FacilityScheduleModalComponent } from './components/facilities/facilityScheduleModal/facilityScheduleModal.component';
+import * as fromFacilities from './components/facilities/facilities.index';
 
 import { CoreService } from './core.service';
 import { AppModalService } from '../shared/modals/modals.service';
@@ -31,20 +28,16 @@ export const ROUTES: Routes = [
     // registering our container component
     CoreComponent,
     ScheduleComponent,
-    FacilitiesComponent,
-    FacilityGroupComponent,
-    FacilityItemComponent,
-    FacilityScheduleModalComponent
+    ...fromFacilities.container
   ],
   entryComponents: [
-    FacilityScheduleModalComponent
+    fromFacilities.FacilityScheduleModalComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
     ReactiveFormsModule,
     SharedModule,
-    // CalendarModule
   ],
   providers: [
     // add the service to our sub-module
@@ -52,7 +45,7 @@ export const ROUTES: Routes = [
     AppModalService
   ],
   exports: [
-    FacilityScheduleModalComponent
+    fromFacilities.FacilityScheduleModalComponent
   ]
 })
 export class CoreModule {}
