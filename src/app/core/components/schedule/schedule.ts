@@ -11,6 +11,7 @@ import {
 import * as $ from 'jquery';
 import 'fullcalendar';
 import { Options } from 'fullcalendar';
+import { Event } from '../../models/event';
 
 @Component({
   template: '<div></div>',
@@ -21,7 +22,7 @@ import { Options } from 'fullcalendar';
 export class ScheduleComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() options: Options;
-  @Input() events: Object;
+  @Input() events: Event[];
   @Output() select = new EventEmitter<any>();
 
   constructor(private element: ElementRef) { }

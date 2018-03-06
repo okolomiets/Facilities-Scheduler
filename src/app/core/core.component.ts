@@ -72,14 +72,9 @@ export class CoreComponent implements OnInit, OnDestroy {
         this.facility = this.coreService.facilityEntities[this.facilityId];
         if (!this.facility) {
           this.goBack();
+        } else {
+          this.events = this.coreService.getFacilityEvents(this.facilityId);
         }
-        this.events = this.coreService.getEvents()
-          .reduce((events, event) => {
-            if (event.facilityId === this.facilityId) {
-              events.push(event);
-            }
-            return events;
-          }, []);
       }
     });
   }
@@ -92,7 +87,7 @@ export class CoreComponent implements OnInit, OnDestroy {
           ...result
         };
         this.events = [...this.events, newEvent];
-        this.coreService.updateEvents(this.events);
+        this.coreService.updateEvents(newEvent);
       })
       .catch((result) => {
         if (result) {

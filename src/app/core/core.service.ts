@@ -25,9 +25,8 @@ export class CoreService {
     return this.events;
   }
 
-  updateEvents(newEvents): void {
-    this.events = [...newEvents];
-    this.getFacilityEntities();
+  updateEvents(newEvent): void {
+    this.events = [...this.events, newEvent];
   }
 
   getFacilityEntities() {
@@ -41,5 +40,15 @@ export class CoreService {
         }
         return entities;
       }, {});
+  }
+
+  getFacilityEvents(facilityId) {
+    return this.getEvents()
+      .reduce((events, event) => {
+        if (event.facilityId === facilityId) {
+          events.push(event);
+        }
+        return events;
+      }, []);
   }
 }
