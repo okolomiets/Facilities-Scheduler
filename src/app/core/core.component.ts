@@ -53,7 +53,7 @@ export class CoreComponent implements OnInit, OnDestroy {
       selectable: false,
       editable: false,
       defaultView: 'agendaWeek',
-      slotDuration: '00:30:00',
+      slotDuration: '01:00:00',
       minTime: '08:00:00',
       maxTime: '21:00:00',
       slotEventOverlap: false,
