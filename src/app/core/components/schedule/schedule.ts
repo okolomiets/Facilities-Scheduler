@@ -6,11 +6,11 @@ import {
   AfterViewInit,
   ElementRef,
   EventEmitter,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy, OnChanges, SimpleChanges
 } from '@angular/core';
 import * as $ from 'jquery';
 import 'fullcalendar';
-import {Options} from 'fullcalendar';
+import { Options } from 'fullcalendar';
 
 @Component({
   template: '<div></div>',
@@ -18,7 +18,7 @@ import {Options} from 'fullcalendar';
   styleUrls: ['./schedule.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ScheduleComponent implements OnInit, AfterViewInit {
+export class ScheduleComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() options: Options;
   @Input() events: Object;
@@ -34,35 +34,15 @@ export class ScheduleComponent implements OnInit, AfterViewInit {
     $(this.element.nativeElement).fullCalendar({...this.options, events: this.events});
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (!changes.events.firstChange) {
+      const changedEvents = [...changes.events.currentValue];
+      $(this.element.nativeElement).fullCalendar('removeEvents');
+      $(this.element.nativeElement).fullCalendar('renderEvents', changedEvents, true);
+    }
+  }
+
   onSelect(date, jsEvent, view) {
     this.select.emit({ date, jsEvent, view });
   }
-
-  /*
-
-  fullCalendar(...args: any[]) {
-    if (!args) {
-      return;
-    }
-    switch (args.length) {
-      case 0:
-        return;
-      case 1:
-        return $(this.element.nativeElement).fullCalendar(args[0]);
-      case 2:
-        return $(this.element.nativeElement).fullCalendar(args[0], args[1]);
-      case 3:
-        return $(this.element.nativeElement).fullCalendar(args[0], args[1], args[2]);
-    }
-  }
-
-  updateEvent(event) {
-    return $(this.element.nativeElement).fullCalendar('updateEvent', event);
-  }
-
-  clientEvents(idOrFilter) {
-    return $(this.element.nativeElement).fullCalendar('clientEvents', idOrFilter);
-  }
-
-  */
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ScheduleComponent } from './components/schedule/schedule';
 import { CoreComponent } from './core.component';
@@ -13,9 +13,6 @@ import { FacilityScheduleModalComponent } from './components/facilities/facility
 import { CoreService } from './core.service';
 import { AppModalService } from '../shared/modals/modals.service';
 import { SharedModule } from '../shared/shared.module';
-
-// primeNG modules
-// import { CalendarModule } from 'primeng/calendar';
 
 // routes
 export const ROUTES: Routes = [
@@ -45,7 +42,7 @@ export const ROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
-    // FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     // CalendarModule
   ],

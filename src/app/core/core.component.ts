@@ -1,7 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
-import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
 import { Event } from './models/event';
@@ -25,7 +24,7 @@ import { FacilityScheduleModalComponent } from './components/facilities/facility
         <li>{{facility.name}}</li>
       </ol>
       <app-fullcalendar [options]="calendarOptions"
-                        [events]="events"
+n                       [events]="events"
                         (select)="onSelect($event)">
       </app-fullcalendar>
     </div>
@@ -35,7 +34,6 @@ import { FacilityScheduleModalComponent } from './components/facilities/facility
 export class CoreComponent implements OnInit, OnDestroy {
   calendarOptions: Object;
   events: Event[] = [];
-  calendarEvents = new Subject();
   paramsSub: Subscription;
   showSchedule = false;
   facilityId: number;
@@ -55,7 +53,7 @@ export class CoreComponent implements OnInit, OnDestroy {
       selectable: false,
       editable: false,
       defaultView: 'agendaWeek',
-      slotDuration: '01:00:00',
+      slotDuration: '00:30:00',
       minTime: '08:00:00',
       maxTime: '21:00:00',
       slotEventOverlap: false,
@@ -87,18 +85,21 @@ export class CoreComponent implements OnInit, OnDestroy {
   }
 
   onSelect({date, jsEvent, view}) {
-    console.log('onSelect view', view.type);
-    console.log('onSelect date', date.format());
     // this.store.dispatch(new fromStore.VisualiseToppings(event));
-    this.appModalService.open(FacilityScheduleModalComponent, { date: date.format() });
-  }
-
-  onClick() {
-    this.showSchedule = !this.showSchedule;
-  }
-
-  onSubmit() {
-    this.calendarEvents.next([]);
+    this.appModalService.open(FacilityScheduleModalComponent, { start: date.format(), facility: this.facility })
+      .then((result) => {
+        const newEvent = {
+          facilityId: this.facilityId,
+          ...result
+        };
+        this.events = [...this.events, newEvent];
+        this.coreService.updateEvents(this.events);
+      })
+      .catch((result) => {
+        if (result) {
+          console.log('appModalService modal dismiss or error', result);
+        }
+      });
   }
 
   goBack() {

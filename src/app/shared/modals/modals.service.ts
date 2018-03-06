@@ -18,5 +18,6 @@ export class AppModalService {
     Object.keys(params).map(key => {
       modalRef.componentInstance[key] = params[key];
     });
+    return modalRef.result;
   }
 }
