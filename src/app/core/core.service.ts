@@ -27,7 +27,6 @@ export class CoreService {
 
   updateEvents(newEvents): void {
     this.events = [...newEvents];
-    console.log('this.events', this.events);
     this.getFacilityEntities();
   }
 
