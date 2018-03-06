@@ -23,8 +23,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
             <input formControlName="start" type="text" class="form-control" id="start" placeholder="">
           </div>
         </div>
-        <div class="form-group" [hidden]="allDay">
-          <label for="duration" class="col-sm-2 control-label">Duration (hrs)</label>
+        <div class="form-group">
+          <label for="duration" class="col-sm-2 control-label">Duration ({{ allDay? 'days' : 'hrs'}})</label>
           <div class="col-sm-10">
             <input formControlName="duration" type="number" [min]="1" [max]="8" class="form-control" id="duration" placeholder="">
           </div>
@@ -73,7 +73,8 @@ export class FacilityScheduleModalComponent implements OnInit {
 
   addSchedule() {
     const formValue = this.form.getRawValue();
-    const end = this.start.add(formValue.duration, 'h').format();
+    const durationInterval = this.allDay ? 'd' : 'h';
+    const end = this.start.add(formValue.duration, durationInterval).format();
     this.scheduleDate = { ...formValue, end };
     this.activeModal.close(this.scheduleDate);
   }
