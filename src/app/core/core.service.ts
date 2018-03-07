@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 // import { tap, filter, take, switchMap, catchError } from 'rxjs/operators';
 
-import { Event } from './models/event';
-import { Facility, FacilityEntities } from './models/facility';
+import { Event } from '../models/event';
+import { Facility, FacilityEntities } from '../models/facility';
 
 import { Facilities, Events } from './core.data';
 

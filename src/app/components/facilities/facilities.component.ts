@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { CoreService } from '../../core.service';
+import { CoreService } from '../../core/core.service';
 
 import { Facility } from '../../models/facility';
 import { Observable } from 'rxjs/Observable';

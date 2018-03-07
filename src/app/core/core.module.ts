@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ScheduleComponent } from './components/schedule/schedule';
-import { CalendarComponent } from './components/schedule/calendar/calendar';
-import { FacilitiesComponent } from './components/facilities/facilities.component';
+import { ScheduleComponent } from '../components/schedule/schedule';
+import { CalendarComponent } from '../components/schedule/calendar/calendar';
+import { FacilitiesComponent } from '../components/facilities/facilities.component';
 
-import * as fromFacilities from './components/facilities/facilities.index';
+import * as fromFacilities from '../components/facilities/facilities.index';
 
 import { CoreService } from './core.service';
 import { AppModalService } from '../shared/modals/modals.service';

@@ -6,8 +6,8 @@ import { Event } from '../../models/event';
 import { Facility } from '../../models/facility';
 import { FacilityScheduleModalComponent } from '../facilities/facilityScheduleModal/facilityScheduleModal.component';
 
-import { CoreService } from '../../core.service';
-import { AppModalService } from '../../../shared/modals/modals.service';
+import { CoreService } from '../../core/core.service';
+import { AppModalService } from '../../shared/modals/modals.service';
 
 @Component({
   template: `<div class="app-schedule-container" *ngIf="facility">
