@@ -20,8 +20,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
         <div class="form-group">
           <label for="start" class="col-sm-2 control-label">Start time</label>
           <div class="col-sm-10">
-            <!--<input formControlName="start" type="text" class="form-control" id="start" placeholder="">-->
-            <app-date-input formControlName="start" id="start"></app-date-input>
+            <input formControlName="start" type="text" class="form-control" id="start" placeholder="">
+            <!--<app-date-input formControlName="start" id="start"></app-date-input>-->
           </div>
         </div>
         <div class="form-group">
@@ -64,9 +64,12 @@ export class FacilityScheduleModalComponent implements OnInit {
 
   ngOnInit() {
     this.allDay = /^\d{4}-\d{2}-\d{2}$/i.test(this.start.format());
+    const dateFormat = this.allDay ? 'dddd, MMMM Do YYYY' : 'dddd, MMMM Do YYYY, h:mm:ss a';
+    const start = this.start.format(dateFormat);
+
     this.form = new FormGroup({
       title: new FormControl('', Validators.required),
-      start: new FormControl({ value: this.start.format(), disabled: true }),
+      start: new FormControl({ value: start, disabled: true }),
       duration: new FormControl(1),
       allDay: new FormControl({ value: this.allDay, disabled: this.allDay }),
     });
@@ -74,9 +77,12 @@ export class FacilityScheduleModalComponent implements OnInit {
 
   addSchedule() {
     const formValue = this.form.getRawValue();
+
     const durationInterval = this.allDay ? 'd' : 'h';
+    const start = this.start.format();
     const end = this.start.add(formValue.duration, durationInterval).format();
-    this.scheduleDate = { ...formValue, end };
+
+    this.scheduleDate = { ...formValue, start, end };
     this.activeModal.close(this.scheduleDate);
   }
 

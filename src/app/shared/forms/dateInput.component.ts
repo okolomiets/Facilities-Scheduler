@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   forwardRef,
@@ -26,6 +27,7 @@ export const DATE_VALUE_ACCESSOR: any = {
   `,
   selector: 'app-date-input',
   styles:[],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers:[DATE_VALUE_ACCESSOR]
 })
 export class DateInputComponent implements ControlValueAccessor {
@@ -35,18 +37,16 @@ export class DateInputComponent implements ControlValueAccessor {
   changeCallback = Function;
   touchCallback = Function;
 
-  onChange(event){
-    const timestamp = this.convertToTimestamp(event.target.value);
+  onChange(value) {
+    const timestamp = this.convertToTimestamp(value);
     this.changeCallback(timestamp);
   }
 
   convertToTimestamp(formattedDate) {
-    // TODO:implement
     return formattedDate;
   }
 
   convertFromTimestamp(timestamp) {
-    // TODO:implement
     return timestamp;
   }
 
