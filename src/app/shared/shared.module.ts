@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// form inputs
+import { DateInputComponent } from './forms/dateInput.component';
+
 // ng-bootstrap modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,13 +11,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppModalService } from './modals/modals.service';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DateInputComponent
+  ],
   entryComponents: [],
   imports: [
     CommonModule,
     NgbModule
   ],
-  exports: [],
+  exports: [
+    DateInputComponent
+  ],
   providers: [AppModalService],
   bootstrap: []
 })

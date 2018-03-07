@@ -20,7 +20,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
         <div class="form-group">
           <label for="start" class="col-sm-2 control-label">Start time</label>
           <div class="col-sm-10">
-            <input formControlName="start" type="text" class="form-control" id="start" placeholder="">
+            <!--<input formControlName="start" type="text" class="form-control" id="start" placeholder="">-->
+            <app-date-input formControlName="start" id="start"></app-date-input>
           </div>
         </div>
         <div class="form-group">
