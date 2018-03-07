@@ -6,7 +6,7 @@ form {
   margin-right: 5%;
 }
 
-.app-calendar-container, .app-facilities-list {
+.app-schedule-container, .app-facilities-list {
   max-width: 900px;
   margin: 40px auto;
 }
