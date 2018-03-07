@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -21,11 +21,10 @@ import { Facility } from '../../models/facility';
   styleUrls: ['./facilities.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class FacilitiesComponent implements OnInit {
+export class FacilitiesComponent implements OnInit, OnDestroy {
   recentFacilityId: number = null;
   facilities$: Observable<Facility[]>;
   paramsSub: Subscription;
-  facilityEntitiesSub: Subscription;
 
   constructor(
     private coreService: CoreService,
@@ -36,14 +35,12 @@ export class FacilitiesComponent implements OnInit {
     this.facilities$ = this.coreService.getFacilities();
     this.paramsSub = this.currentRoute.params.subscribe((params: Params) => {
       if (params['recentFacilityId']) {
-        const facilityId = parseInt(params['recentFacilityId'], 10);
-        this.facilityEntitiesSub = this.coreService.getFacilityEntities().subscribe(facilityEntities => {
-          const facility = facilityEntities[facilityId];
-          if (facility) {
-            this.recentFacilityId = facility.id;
-          }
-        });
+        this.recentFacilityId = parseInt(params['recentFacilityId'], 10);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.paramsSub.unsubscribe();
   }
 }
