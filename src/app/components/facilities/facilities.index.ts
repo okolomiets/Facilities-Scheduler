@@ -3,7 +3,7 @@ import { FacilityGroupComponent } from './facilityGroup/facilityGroup.component'
 import { FacilityItemComponent } from './facilityItem/facilityItem.component';
 import { FacilityScheduleModalComponent } from './facilityScheduleModal/facilityScheduleModal.component';
 
-export const container = [
+export const FacilitiesContainer = [
   FacilitiesComponent,
   FacilityGroupComponent,
   FacilityItemComponent,
