@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+// import { tap, filter, take, switchMap, catchError } from 'rxjs/operators';
+
 import { Event } from './models/event';
-import { Facility } from './models/facility';
+import { Facility, FacilityEntities } from './models/facility';
 
 import { Facilities, Events } from './core.data';
 
@@ -9,16 +13,20 @@ import { Facilities, Events } from './core.data';
 export class CoreService {
   private facilities: Facility[];
   private events: Event[];
-  facilityEntities: {[key: string]: Facility};
+  facilityEntities: FacilityEntities;
 
   constructor() {
     this.facilities = Facilities;
     this.events = Events;
-    this.facilityEntities = this.getFacilityEntities();
+    this.facilityEntities = this.setFacilityEntities();
   }
 
-  getFacilities(): Facility[] {
-    return this.facilities;
+  getFacilities(): Observable<Facility[]> {
+    return of(this.facilities);
+  }
+
+  getFacilityEntities(): Observable<FacilityEntities> {
+    return of(this.facilityEntities);
   }
 
   getEvents(): Event[] {
@@ -29,7 +37,7 @@ export class CoreService {
     this.events = [...this.events, newEvent];
   }
 
-  getFacilityEntities() {
+  setFacilityEntities(): FacilityEntities {
     return this.facilities
       .reduce((entities, facility) => {
         entities[facility.id] = facility;
@@ -42,13 +50,13 @@ export class CoreService {
       }, {});
   }
 
-  getFacilityEvents(facilityId) {
-    return this.getEvents()
-      .reduce((events, event) => {
-        if (event.facilityId === facilityId) {
-          events.push(event);
-        }
-        return events;
-      }, []);
+  getFacilityEvents(facilityId): Observable<Event[]> {
+    const facilityEvents = this.getEvents().reduce((events, event) => {
+      if (event.facilityId === facilityId) {
+        events.push(event);
+      }
+      return events;
+    }, []);
+    return of(facilityEvents);
   }
 }

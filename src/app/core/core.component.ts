@@ -11,6 +11,9 @@ import { AppModalService } from '../shared/modals/modals.service';
 import { Facility } from './models/facility';
 
 import { FacilityScheduleModalComponent } from './components/facilities/facilityScheduleModal/facilityScheduleModal.component';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-calendar',
@@ -24,7 +27,7 @@ import { FacilityScheduleModalComponent } from './components/facilities/facility
         <li>{{facility.name}}</li>
       </ol>
       <app-fullcalendar [options]="calendarOptions"
-n                       [events]="events"
+                        [events]="events"
                         (select)="onSelect($event)">
       </app-fullcalendar>
     </div>
@@ -35,6 +38,8 @@ export class CoreComponent implements OnInit, OnDestroy {
   calendarOptions: Object;
   events: Event[] = [];
   paramsSub: Subscription;
+  facilityEntitiesSub: Subscription;
+  facilityEventsSub: Subscription;
   showSchedule = false;
   facilityId: number;
   facility: Facility;
@@ -69,12 +74,17 @@ export class CoreComponent implements OnInit, OnDestroy {
       if (params['facilityId']) {
         this.facilityId = parseInt(params['facilityId'], 10);
         this.showSchedule = !!this.facilityId;
-        this.facility = this.coreService.facilityEntities[this.facilityId];
-        if (!this.facility) {
-          this.goBack();
-        } else {
-          this.events = this.coreService.getFacilityEvents(this.facilityId);
-        }
+
+        this.facilityEntitiesSub = this.coreService.getFacilityEntities().subscribe(facilityEntities => {
+          this.facility = facilityEntities[this.facilityId];
+          if (!this.facility) {
+            this.goBack();
+          } else {
+            this.facilityEventsSub = this.coreService.getFacilityEvents(this.facilityId).subscribe(facilityEvents => {
+              this.events = facilityEvents;
+            });
+          }
+        });
       }
     });
   }
@@ -102,6 +112,8 @@ export class CoreComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.paramsSub.unsubscribe();
+    this.facilityEntitiesSub.unsubscribe();
+    this.facilityEventsSub.unsubscribe();
   }
 
 }

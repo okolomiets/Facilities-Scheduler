@@ -6,3 +6,7 @@ export interface Facility {
   price: number;
   group?: any;
 }
+
+export interface FacilityEntities {
+  [key: string]: Facility;
+}
