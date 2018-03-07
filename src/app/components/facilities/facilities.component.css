@@ -8,6 +8,11 @@
   font-weight: lighter;
 }
 
+.panel .panel-footer span.label-info {
+  font-size: small;
+  font-weight: lighter;
+}
+
 .panel .panel-body .media .media-object {
   width: 100px;
 }

@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Facility } from '../../../models/facility';
 
 @Component({
   selector: 'app-facility-item',
@@ -22,11 +23,13 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         </div>
         <div class="panel-footer">
           <span class="btn btn-default" [routerLink]="['/facilities', facility.id]">Show Schedule</span>
+          <span class="label label-info" *ngIf="facility.id === recent.id">Recently Viewed</span>
         </div>
       </div>
     </div>
     `
 })
 export class FacilityItemComponent {
-  @Input() facility: any;
+  @Input() facility: Facility;
+  @Input() recent: Facility;
 }

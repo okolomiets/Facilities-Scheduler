@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Facility } from '../../../models/facility';
 
 @Component({
   selector: 'app-facility-group',
@@ -12,16 +13,18 @@ import {ChangeDetectionStrategy, Component, Input, ViewEncapsulation} from '@ang
             <p>{{facilityGroup.description}}</p>
           </div>
           <div class="row">
-            <app-facility-item *ngFor="let facility of facilityGroup.group" [facility]="facility"></app-facility-item>
+            <app-facility-item *ngFor="let facility of facilityGroup.group" [facility]="facility" [recent]="recent"></app-facility-item>
           </div>
         </div>
         <div class="panel-footer">
           <span class="btn btn-default" [routerLink]="['/facilities', facilityGroup.id]">Show Schedule</span>
+          <span class="label label-info" *ngIf="facilityGroup.id === recent.id">Recently Viewed</span>
         </div>
       </div>
     </div>
     `
 })
 export class FacilityGroupComponent {
-  @Input() facilityGroup: any;
+  @Input() facilityGroup: Facility;
+  @Input() recent: Facility;
 }

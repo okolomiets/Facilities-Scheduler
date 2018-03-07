@@ -12,7 +12,7 @@ import { AppModalService } from '../../shared/modals/modals.service';
 @Component({
   template: `<div class="app-schedule-container" *ngIf="facility">
                 <ol class="breadcrumb">
-                  <li><a routerLink="/calendar">Facilities</a></li>
+                  <li><a [routerLink]="['/facilities', { recentFacilityId: facility.id }]">Facilities</a></li>
                   <li>{{facility.name}}</li>
                 </ol>
                 <app-fullcalendar [options]="calendarOptions"
