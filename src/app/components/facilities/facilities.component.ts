@@ -12,8 +12,8 @@ import { Facility } from '../../models/facility';
   template: `<div class="app-facilities-list">
     <div class="row">
       <ng-container *ngFor="let facility of (facilities$ | async)">
-        <app-facility-item *ngIf="!facility.group" [facility]="facility" [recent]="recentFacility"></app-facility-item>
-        <app-facility-group *ngIf="facility.group" [facilityGroup]="facility" [recent]="recentFacility"></app-facility-group>
+        <app-facility-item *ngIf="!facility.group" [facility]="facility" [recentFacilityId]="recentFacilityId"></app-facility-item>
+        <app-facility-group *ngIf="facility.group" [facilityGroup]="facility" [recentFacilityId]="recentFacilityId"></app-facility-group>
       </ng-container>
     </div>
   </div>
@@ -22,7 +22,7 @@ import { Facility } from '../../models/facility';
   encapsulation: ViewEncapsulation.None
 })
 export class FacilitiesComponent implements OnInit {
-  recentFacility: Facility;
+  recentFacilityId: number = null;
   facilities$: Observable<Facility[]>;
   paramsSub: Subscription;
   facilityEntitiesSub: Subscription;
@@ -38,7 +38,10 @@ export class FacilitiesComponent implements OnInit {
       if (params['recentFacilityId']) {
         const facilityId = parseInt(params['recentFacilityId'], 10);
         this.facilityEntitiesSub = this.coreService.getFacilityEntities().subscribe(facilityEntities => {
-          this.recentFacility = facilityEntities[facilityId];
+          const facility = facilityEntities[facilityId];
+          if (facility) {
+            this.recentFacilityId = facility.id;
+          }
         });
       }
     });

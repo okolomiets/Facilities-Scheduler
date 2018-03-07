@@ -23,7 +23,7 @@ import { Facility } from '../../../models/facility';
         </div>
         <div class="panel-footer">
           <span class="btn btn-default" [routerLink]="['/facilities', facility.id]">Show Schedule</span>
-          <span class="label label-info" *ngIf="facility.id === recent.id">Recently Viewed</span>
+          <span class="label label-info" *ngIf="facility.id === recentFacilityId">Recently Viewed</span>
         </div>
       </div>
     </div>
@@ -31,5 +31,5 @@ import { Facility } from '../../../models/facility';
 })
 export class FacilityItemComponent {
   @Input() facility: Facility;
-  @Input() recent: Facility;
+  @Input() recentFacilityId: number;
 }
