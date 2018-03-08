@@ -46,35 +46,68 @@
   ],
   "events": [
     {
+      "id": 1,
       "facilityId": 1,
       "title": "Meeting",
       "start": "2018-03-12T10:00:00",
       "end": "2018-03-12T12:00:00"
     },
     {
+      "id": 2,
       "facilityId": 3,
       "title": "Lunch",
       "start": "2018-03-12T12:00:00"
     },
     {
+      "id": 3,
       "facilityId": 2,
       "title": "Meeting",
       "start": "2018-03-12T14:00:00"
     },
     {
+      "id": 4,
       "facilityId": 31,
       "title": "Happy Hour",
       "start": "2018-03-12T17:00:00"
     },
     {
+      "id": 5,
       "facilityId": 4,
       "title": "Dinner",
       "start": "2018-03-12T20:00:00"
     },
     {
+      "id": 6,
       "facilityId": 32,
       "title": "Birthday Party",
       "start": "2018-03-13T07:00:00"
+    },
+    {
+      "facilityId": 4,
+      "title": "test 2",
+      "start": "2018-03-05",
+      "duration": 1,
+      "allDay": true,
+      "end": "2018-03-06",
+      "id": 7
+    },
+    {
+      "facilityId": 4,
+      "title": "test 2",
+      "start": "2018-03-05T09:00:00",
+      "duration": 1,
+      "allDay": false,
+      "end": "2018-03-05T10:00:00",
+      "id": 8
+    },
+    {
+      "facilityId": 4,
+      "title": "test",
+      "start": "2018-03-05T11:00:00",
+      "duration": 1,
+      "allDay": false,
+      "end": "2018-03-05T12:00:00",
+      "id": 9
     }
   ]
 }

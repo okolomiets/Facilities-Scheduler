@@ -1,44 +1,59 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-// import { tap, filter, take, switchMap, catchError } from 'rxjs/operators';
+import { tap, filter, take, switchMap, catchError } from 'rxjs/operators';
 
 import { Event } from '../models/event';
 import { Facility, FacilityEntities } from '../models/facility';
 
-import { Facilities, Events } from './core.data';
-
 @Injectable()
 export class CoreService {
-  private facilities: Facility[];
-  private events: Event[];
   facilityEntities: FacilityEntities;
 
-  constructor() {
-    this.facilities = Facilities;
-    this.events = Events;
-    this.facilityEntities = this.setFacilityEntities();
-  }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getFacilities(): Observable<Facility[]> {
-    return of(this.facilities);
+      return this.http
+        .get<Facility[]>(`/api/facilities`)
+        .pipe(
+          tap( (facilities: Facility[]) => {
+            this.facilityEntities = this.setFacilityEntities(facilities);
+          }),
+          catchError((error: any) => Observable.throw(error.json()))
+        );
   }
 
   getFacilityEntities(): Observable<FacilityEntities> {
-    return of(this.facilityEntities);
+    if (this.facilityEntities) {
+      return of(this.facilityEntities);
+    } else {
+      return this.getFacilities().pipe(
+        switchMap((facilities: Facility[]) => {
+          this.facilityEntities = this.setFacilityEntities(facilities);
+          return of(this.facilityEntities);
+        })
+      );
+    }
   }
 
-  getEvents(): Event[] {
-    return this.events;
+  getEvents(): Observable<Event[]> {
+    return this.http
+      .get<Event[]>(`/api/events`)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  updateEvents(newEvent): void {
-    this.events = [...this.events, newEvent];
+  updateEvents(newEvent: Event): Observable<Event[]> {
+    return this.http
+      .post<Event>(`/api/events`, newEvent)
+      .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  setFacilityEntities(): FacilityEntities {
-    return this.facilities
+  setFacilityEntities(facilities): FacilityEntities {
+    return facilities
       .reduce((entities, facility) => {
         entities[facility.id] = facility;
         if (facility.group) {
@@ -51,12 +66,16 @@ export class CoreService {
   }
 
   getFacilityEvents(facilityId): Observable<Event[]> {
-    const facilityEvents = this.getEvents().reduce((events, event) => {
-      if (event.facilityId === facilityId) {
-        events.push(event);
-      }
-      return events;
-    }, []);
-    return of(facilityEvents);
+    return this.getEvents().pipe(
+      switchMap(events => {
+        const facilityEvents = events.reduce((fEvents, event) => {
+          if (event.facilityId === facilityId) {
+            fEvents.push(event);
+          }
+          return fEvents;
+        }, []);
+        return of(facilityEvents);
+      })
+    );
   }
 }

@@ -80,8 +80,9 @@ export class ScheduleComponent implements OnInit, OnDestroy {
           facilityId: this.facilityId,
           ...result
         };
-        this.events = [...this.events, newEvent];
-        this.coreService.updateEvents(newEvent);
+        this.coreService.updateEvents(newEvent).subscribe(event => {
+          this.events = [...this.events, newEvent];
+        });
       })
       .catch((result) => {
         if (result) {
