@@ -1,5 +1,6 @@
 import {
   Component,
+  Attribute,
   Input,
   Output,
   OnInit,
@@ -25,10 +26,14 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() events: Event[];
   @Output() select = new EventEmitter<any>();
 
-  constructor(private element: ElementRef) { }
+  constructor(
+    @Attribute('defaultView') public defaultView: string, // one-time binding
+    private element: ElementRef
+  ) { }
 
   ngOnInit() {
     this.options.dayClick = this.onSelect.bind(this);
+    this.options.defaultView = this.defaultView;
   }
 
   ngAfterViewInit() {

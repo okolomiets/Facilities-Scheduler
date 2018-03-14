@@ -16,6 +16,7 @@ import { AppModalService } from '../../shared/modals/modals.service';
                   <li>{{facility.name}}</li>
                 </ol>
                 <app-fullcalendar [options]="calendarOptions"
+                                  defaultView="agendaWeek"
                                   [events]="events"
                                   (select)="onSelect($event)">
                 </app-fullcalendar>
@@ -44,7 +45,6 @@ export class ScheduleComponent implements OnInit, OnDestroy {
       fixedWeekCount : false,
       selectable: false,
       editable: false,
-      defaultView: 'agendaWeek',
       slotDuration: '01:00:00',
       minTime: '08:00:00',
       maxTime: '21:00:00',

@@ -108,6 +108,51 @@
       "allDay": false,
       "end": "2018-03-05T12:00:00",
       "id": 9
+    },
+    {
+      "facilityId": 1,
+      "title": "test 2",
+      "start": "2018-03-12",
+      "duration": 1,
+      "allDay": true,
+      "end": "2018-03-13",
+      "id": 10
+    },
+    {
+      "facilityId": 2,
+      "title": "test 2",
+      "start": "2018-03-13T08:00:00",
+      "duration": 1,
+      "allDay": false,
+      "end": "2018-03-13T09:00:00",
+      "id": 11
+    },
+    {
+      "facilityId": 2,
+      "title": "test",
+      "start": "2018-03-13T09:00:00",
+      "duration": 1,
+      "allDay": false,
+      "end": "2018-03-13T10:00:00",
+      "id": 12
+    },
+    {
+      "facilityId": 2,
+      "title": "test 2",
+      "start": "2018-03-13",
+      "duration": 1,
+      "allDay": true,
+      "end": "2018-03-14",
+      "id": 13
+    },
+    {
+      "facilityId": 2,
+      "title": "test 2",
+      "start": "2018-03-14",
+      "duration": 6,
+      "allDay": true,
+      "end": "2018-03-20",
+      "id": 14
     }
   ]
 }
